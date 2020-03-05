@@ -11,28 +11,16 @@ class Game extends StatefulWidget {
 }
 
 class _GameState extends State<Game> {
-  int player1Score = 0;
-  int player2Score = 0;
-  int draw = 0;
+  int player1Score = 0, player2Score = 0, draw = 0;
+
+  // current player
+  String player = "player1";
 
   List<List<String>> pos = [
     [null, null, null],
     [null, null, null],
     [null, null, null],
   ];
-
-  // current player
-  String player = "player1";
-
-  String player1;
-  String player2;
-  String player3;
-  String player4;
-  String player5;
-  String player6;
-  String player7;
-  String player8;
-  String player9;
 
   IconLogic iconLogic = IconLogic();
 
@@ -220,12 +208,11 @@ class _GameState extends State<Game> {
                         color: Colors.white,
                         child: pos[0][0] == null
                             ? null
-                            : iconLogic.choice(player1),
+                            : iconLogic.choice(pos[0][0]),
                       ),
                       onTap: () {
                         if (pos[0][0] != null) return;
                         setState(() {
-                          player1 = player;
                           pos[0][0] = player;
                           _check();
                           _switchPlayer();
@@ -256,12 +243,11 @@ class _GameState extends State<Game> {
                         padding: EdgeInsets.all(10),
                         child: pos[0][1] == null
                             ? null
-                            : iconLogic.choice(player2),
+                            : iconLogic.choice(pos[0][1]),
                       ),
                       onTap: () {
                         if (pos[0][1] != null) return;
                         setState(() {
-                          player2 = player;
                           pos[0][1] = player;
                           _check();
                           _switchPlayer();
@@ -280,12 +266,11 @@ class _GameState extends State<Game> {
                         color: Colors.white,
                         child: pos[0][2] == null
                             ? null
-                            : iconLogic.choice(player3),
+                            : iconLogic.choice(pos[0][2]),
                       ),
                       onTap: () {
                         if (pos[0][2] != null) return;
                         setState(() {
-                          player3 = player;
                           pos[0][2] = player;
                           _check();
                           _switchPlayer();
@@ -322,12 +307,11 @@ class _GameState extends State<Game> {
                         padding: EdgeInsets.all(10),
                         child: pos[1][0] == null
                             ? null
-                            : iconLogic.choice(player4),
+                            : iconLogic.choice(pos[1][0]),
                       ),
                       onTap: () {
                         if (pos[1][0] != null) return;
                         setState(() {
-                          player4 = player;
                           pos[1][0] = player;
                           _check();
                           _switchPlayer();
@@ -351,12 +335,11 @@ class _GameState extends State<Game> {
                         padding: EdgeInsets.all(10),
                         child: pos[1][1] == null
                             ? null
-                            : iconLogic.choice(player5),
+                            : iconLogic.choice(pos[1][1]),
                       ),
                       onTap: () {
                         if (pos[1][1] != null) return;
                         setState(() {
-                          player5 = player;
                           pos[1][1] = player;
                           _check();
                           _switchPlayer();
@@ -387,12 +370,11 @@ class _GameState extends State<Game> {
                         padding: EdgeInsets.all(10),
                         child: pos[1][2] == null
                             ? null
-                            : iconLogic.choice(player6),
+                            : iconLogic.choice(pos[1][2]),
                       ),
                       onTap: () {
                         if (pos[1][2] != null) return;
                         setState(() {
-                          player6 = player;
                           pos[1][2] = player;
                           _check();
                           _switchPlayer();
@@ -417,12 +399,11 @@ class _GameState extends State<Game> {
                         color: Colors.white,
                         child: pos[2][0] == null
                             ? null
-                            : iconLogic.choice(player7),
+                            : iconLogic.choice(pos[2][0]),
                       ),
                       onTap: () {
                         if (pos[2][0] != null) return;
                         setState(() {
-                          player7 = player;
                           pos[2][0] = player;
                           _check();
                           _switchPlayer();
@@ -453,12 +434,11 @@ class _GameState extends State<Game> {
                         padding: EdgeInsets.all(10),
                         child: pos[2][1] == null
                             ? null
-                            : iconLogic.choice(player8),
+                            : iconLogic.choice(pos[2][1]),
                       ),
                       onTap: () {
                         if (pos[2][1] != null) return;
                         setState(() {
-                          player8 = player;
                           pos[2][1] = player;
                           _check();
                           _switchPlayer();
@@ -477,12 +457,11 @@ class _GameState extends State<Game> {
                         color: Colors.white,
                         child: pos[2][2] == null
                             ? null
-                            : iconLogic.choice(player9),
+                            : iconLogic.choice(pos[2][2]),
                       ),
                       onTap: () {
                         if (pos[2][2] != null) return;
                         setState(() {
-                          player9 = player;
                           pos[2][2] = player;
                           _check();
                           _switchPlayer();
