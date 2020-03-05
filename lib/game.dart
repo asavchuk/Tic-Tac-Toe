@@ -21,7 +21,7 @@ class _GameState extends State<Game> {
     [null, null, null],
   ];
 
-  var player = "player1"; // current player
+  String player = "player1"; // current player
 
   String player1;
   String player2;
@@ -33,28 +33,9 @@ class _GameState extends State<Game> {
   String player8;
   String player9;
 
-  int flag1 = 0,
-      flag2 = 0,
-      flag3 = 0,
-      flag4 = 0,
-      flag5 = 0,
-      flag6 = 0,
-      flag7 = 0,
-      flag8 = 0,
-      flag9 = 0;
-
   IconLogic iconLogic = IconLogic();
 
-  void _resetData() {
-    flag1 = 0;
-    flag2 = 0;
-    flag3 = 0;
-    flag4 = 0;
-    flag5 = 0;
-    flag6 = 0;
-    flag7 = 0;
-    flag8 = 0;
-    flag9 = 0;
+  void _resetCells() {
     pos = [
       [null, null, null],
       [null, null, null],
@@ -62,23 +43,23 @@ class _GameState extends State<Game> {
     ];
   }
 
-  void reset1() {
+  void _reset1() {
     setState(() {
-      _resetData();
+      _resetCells();
       player1Score += 1;
     });
   }
 
-  void reset2() {
+  void _reset2() {
     setState(() {
-      _resetData();
+      _resetCells();
       player2Score += 1;
     });
   }
 
-  void reset3() {
+  void _reset3() {
     setState(() {
-      _resetData();
+      _resetCells();
       draw += 1;
     });
   }
@@ -97,41 +78,38 @@ class _GameState extends State<Game> {
     return false;
   }
 
+  // if all the cells checked
   bool _checkFlags() {
-    if (flag1 == 1 &&
-        flag2 == 1 &&
-        flag3 == 1 &&
-        flag4 == 1 &&
-        flag5 == 1 &&
-        flag6 == 1 &&
-        flag7 == 1 &&
-        flag8 == 1 &&
-        flag9 == 1) {
-      return true;
+    for (int i = 0; i < pos.length; i++) {
+      for (int j = 0; j < pos.length; j++) {
+        if (pos[i][j] == null) {
+          return false;
+        }
+      }
     }
-    return false;
+    return true;
   }
 
-  void check() {
+  void _check() {
     if (_isWon(player)) {
       if (player == "player1") {
-        gameFinishAlert('Player 1 won');
-        reset1();
+        _gameFinishAlert('Player 1 won');
+        _reset1();
         return;
       } else {
-        gameFinishAlert('Player 2 won');
-        reset2();
+        _gameFinishAlert('Player 2 won');
+        _reset2();
         return;
       }
     }
 
     if (_checkFlags()) {
-      gameFinishAlert('No winner');
-      reset3();
+      _gameFinishAlert('No winner');
+      _reset3();
     }
   }
 
-  void gameFinishAlert(String message) {
+  void _gameFinishAlert(String message) {
     Alert(
       context: context,
       closeFunction: () {},
@@ -151,7 +129,7 @@ class _GameState extends State<Game> {
     ).show();
   }
 
-  void switchPlayer() {
+  void _switchPlayer() {
     player == "player1" ? player = "player2" : player = "player1";
   }
 
@@ -239,16 +217,17 @@ class _GameState extends State<Game> {
                         height: 120,
                         padding: EdgeInsets.all(10),
                         color: Colors.white,
-                        child: flag1 == 0 ? null : iconLogic.choice(player1),
+                        child: pos[0][0].isEmpty
+                            ? null
+                            : iconLogic.choice(player1),
                       ),
                       onTap: () {
-                        if (flag1 != 0) return;
+                        if (pos[0][0].isNotEmpty) return;
                         setState(() {
-                          flag1 = 1;
                           player1 = player;
                           pos[0][0] = player;
-                          check();
-                          switchPlayer();
+                          _check();
+                          _switchPlayer();
                         });
                       },
                     ),
@@ -274,16 +253,17 @@ class _GameState extends State<Game> {
                         width: 120,
                         height: 120,
                         padding: EdgeInsets.all(10),
-                        child: flag2 == 0 ? null : iconLogic.choice(player2),
+                        child: pos[0][1].isEmpty
+                            ? null
+                            : iconLogic.choice(player2),
                       ),
                       onTap: () {
-                        if (flag2 != 0) return;
+                        if (pos[0][1].isNotEmpty) return;
                         setState(() {
-                          flag2 = 1;
                           player2 = player;
                           pos[0][1] = player;
-                          check();
-                          switchPlayer();
+                          _check();
+                          _switchPlayer();
                         });
                       },
                     ),
@@ -297,16 +277,17 @@ class _GameState extends State<Game> {
                         height: 120,
                         padding: EdgeInsets.all(10),
                         color: Colors.white,
-                        child: flag3 == 0 ? null : iconLogic.choice(player3),
+                        child: pos[0][2].isEmpty
+                            ? null
+                            : iconLogic.choice(player3),
                       ),
                       onTap: () {
-                        if (flag3 != 0) return;
+                        if (pos[0][2].isNotEmpty) return;
                         setState(() {
-                          flag3 = 1;
                           player3 = player;
                           pos[0][2] = player;
-                          check();
-                          switchPlayer();
+                          _check();
+                          _switchPlayer();
                         });
                       },
                     ),
@@ -338,16 +319,17 @@ class _GameState extends State<Game> {
                         width: 120,
                         height: 120,
                         padding: EdgeInsets.all(10),
-                        child: flag4 == 0 ? null : iconLogic.choice(player4),
+                        child: pos[1][0].isEmpty
+                            ? null
+                            : iconLogic.choice(player4),
                       ),
                       onTap: () {
-                        if (flag4 != 0) return;
+                        if (pos[1][0].isNotEmpty) return;
                         setState(() {
-                          flag4 = 1;
                           player4 = player;
                           pos[1][0] = player;
-                          check();
-                          switchPlayer();
+                          _check();
+                          _switchPlayer();
                         });
                       },
                     ),
@@ -366,16 +348,17 @@ class _GameState extends State<Game> {
                         width: 120,
                         height: 120,
                         padding: EdgeInsets.all(10),
-                        child: flag5 == 0 ? null : iconLogic.choice(player5),
+                        child: pos[1][1].isEmpty
+                            ? null
+                            : iconLogic.choice(player5),
                       ),
                       onTap: () {
-                        if (flag5 != 0) return;
+                        if (pos[1][1].isNotEmpty) return;
                         setState(() {
-                          flag5 = 1;
                           player5 = player;
                           pos[1][1] = player;
-                          check();
-                          switchPlayer();
+                          _check();
+                          _switchPlayer();
                         });
                       },
                     ),
@@ -401,16 +384,17 @@ class _GameState extends State<Game> {
                         width: 120,
                         height: 120,
                         padding: EdgeInsets.all(10),
-                        child: flag6 == 0 ? null : iconLogic.choice(player6),
+                        child: pos[1][2].isEmpty
+                            ? null
+                            : iconLogic.choice(player6),
                       ),
                       onTap: () {
-                        if (flag6 != 0) return;
+                        if (pos[1][2].isNotEmpty) return;
                         setState(() {
-                          flag6 = 1;
                           player6 = player;
                           pos[1][2] = player;
-                          check();
-                          switchPlayer();
+                          _check();
+                          _switchPlayer();
                         });
                       },
                     ),
@@ -430,16 +414,17 @@ class _GameState extends State<Game> {
                         height: 120,
                         padding: EdgeInsets.all(10),
                         color: Colors.white,
-                        child: flag7 == 0 ? null : iconLogic.choice(player7),
+                        child: pos[2][0].isEmpty
+                            ? null
+                            : iconLogic.choice(player7),
                       ),
                       onTap: () {
-                        if (flag7 != 0) return;
+                        if (pos[2][0].isNotEmpty) return;
                         setState(() {
-                          flag7 = 1;
                           player7 = player;
                           pos[2][0] = player;
-                          check();
-                          switchPlayer();
+                          _check();
+                          _switchPlayer();
                         });
                       },
                     ),
@@ -465,16 +450,17 @@ class _GameState extends State<Game> {
                         width: 120,
                         height: 120,
                         padding: EdgeInsets.all(10),
-                        child: flag8 == 0 ? null : iconLogic.choice(player8),
+                        child: pos[2][1].isEmpty
+                            ? null
+                            : iconLogic.choice(player8),
                       ),
                       onTap: () {
-                        if (flag8 != 0) return;
+                        if (pos[2][1] != null) return;
                         setState(() {
-                          flag8 = 1;
                           player8 = player;
                           pos[2][1] = player;
-                          check();
-                          switchPlayer();
+                          _check();
+                          _switchPlayer();
                         });
                       },
                     ),
@@ -488,16 +474,17 @@ class _GameState extends State<Game> {
                         height: 120,
                         padding: EdgeInsets.all(10),
                         color: Colors.white,
-                        child: flag9 == 0 ? null : iconLogic.choice(player9),
+                        child: pos[2][2].isEmpty
+                            ? null
+                            : iconLogic.choice(player9),
                       ),
                       onTap: () {
-                        if (flag9 != 0) return;
+                        if (pos[2][2].isNotEmpty) return;
                         setState(() {
-                          flag9 = 1;
                           player9 = player;
                           pos[2][2] = player;
-                          check();
-                          switchPlayer();
+                          _check();
+                          _switchPlayer();
                         });
                       },
                     ),
@@ -523,7 +510,7 @@ class _GameState extends State<Game> {
                   child: IconButton(
                     onPressed: () {
                       setState(() {
-                        _resetData();
+                        _resetCells();
                         player = 'player1';
                         player1Score = 0;
                         player2Score = 0;
