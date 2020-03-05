@@ -218,12 +218,12 @@ class _GameState extends State<Game> {
                         height: 120,
                         padding: EdgeInsets.all(10),
                         color: Colors.white,
-                        child: pos[0][0].isEmpty
+                        child: pos[0][0] == null
                             ? null
                             : iconLogic.choice(player1),
                       ),
                       onTap: () {
-                        if (pos[0][0].isNotEmpty) return;
+                        if (pos[0][0] != null) return;
                         setState(() {
                           player1 = player;
                           pos[0][0] = player;
@@ -254,12 +254,12 @@ class _GameState extends State<Game> {
                         width: 120,
                         height: 120,
                         padding: EdgeInsets.all(10),
-                        child: pos[0][1].isEmpty
+                        child: pos[0][1] == null
                             ? null
                             : iconLogic.choice(player2),
                       ),
                       onTap: () {
-                        if (pos[0][1].isNotEmpty) return;
+                        if (pos[0][1] != null) return;
                         setState(() {
                           player2 = player;
                           pos[0][1] = player;
@@ -278,12 +278,12 @@ class _GameState extends State<Game> {
                         height: 120,
                         padding: EdgeInsets.all(10),
                         color: Colors.white,
-                        child: pos[0][2].isEmpty
+                        child: pos[0][2] == null
                             ? null
                             : iconLogic.choice(player3),
                       ),
                       onTap: () {
-                        if (pos[0][2].isNotEmpty) return;
+                        if (pos[0][2] != null) return;
                         setState(() {
                           player3 = player;
                           pos[0][2] = player;
@@ -320,12 +320,12 @@ class _GameState extends State<Game> {
                         width: 120,
                         height: 120,
                         padding: EdgeInsets.all(10),
-                        child: pos[1][0].isEmpty
+                        child: pos[1][0] == null
                             ? null
                             : iconLogic.choice(player4),
                       ),
                       onTap: () {
-                        if (pos[1][0].isNotEmpty) return;
+                        if (pos[1][0] != null) return;
                         setState(() {
                           player4 = player;
                           pos[1][0] = player;
@@ -349,12 +349,12 @@ class _GameState extends State<Game> {
                         width: 120,
                         height: 120,
                         padding: EdgeInsets.all(10),
-                        child: pos[1][1].isEmpty
+                        child: pos[1][1] == null
                             ? null
                             : iconLogic.choice(player5),
                       ),
                       onTap: () {
-                        if (pos[1][1].isNotEmpty) return;
+                        if (pos[1][1] != null) return;
                         setState(() {
                           player5 = player;
                           pos[1][1] = player;
@@ -385,12 +385,12 @@ class _GameState extends State<Game> {
                         width: 120,
                         height: 120,
                         padding: EdgeInsets.all(10),
-                        child: pos[1][2].isEmpty
+                        child: pos[1][2] == null
                             ? null
                             : iconLogic.choice(player6),
                       ),
                       onTap: () {
-                        if (pos[1][2].isNotEmpty) return;
+                        if (pos[1][2] != null) return;
                         setState(() {
                           player6 = player;
                           pos[1][2] = player;
@@ -415,12 +415,12 @@ class _GameState extends State<Game> {
                         height: 120,
                         padding: EdgeInsets.all(10),
                         color: Colors.white,
-                        child: pos[2][0].isEmpty
+                        child: pos[2][0] == null
                             ? null
                             : iconLogic.choice(player7),
                       ),
                       onTap: () {
-                        if (pos[2][0].isNotEmpty) return;
+                        if (pos[2][0] != null) return;
                         setState(() {
                           player7 = player;
                           pos[2][0] = player;
@@ -451,7 +451,7 @@ class _GameState extends State<Game> {
                         width: 120,
                         height: 120,
                         padding: EdgeInsets.all(10),
-                        child: pos[2][1].isEmpty
+                        child: pos[2][1] == null
                             ? null
                             : iconLogic.choice(player8),
                       ),
@@ -475,12 +475,12 @@ class _GameState extends State<Game> {
                         height: 120,
                         padding: EdgeInsets.all(10),
                         color: Colors.white,
-                        child: pos[2][2].isEmpty
+                        child: pos[2][2] == null
                             ? null
                             : iconLogic.choice(player9),
                       ),
                       onTap: () {
-                        if (pos[2][2].isNotEmpty) return;
+                        if (pos[2][2] != null) return;
                         setState(() {
                           player9 = player;
                           pos[2][2] = player;
