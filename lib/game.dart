@@ -21,7 +21,8 @@ class _GameState extends State<Game> {
     [null, null, null],
   ];
 
-  String player = "player1"; // current player
+  // current player
+  String player = "player1";
 
   String player1;
   String player2;
