@@ -80,7 +80,7 @@ class _GameState extends State<Game> {
   }
 
   // if all the cells checked
-  bool _checkFlags() {
+  bool _checkCells() {
     for (int i = 0; i < pos.length; i++) {
       for (int j = 0; j < pos.length; j++) {
         if (pos[i][j] == null) {
@@ -104,7 +104,7 @@ class _GameState extends State<Game> {
       }
     }
 
-    if (_checkFlags()) {
+    if (_checkCells()) {
       _gameFinishAlert('No winner');
       _reset3();
     }
