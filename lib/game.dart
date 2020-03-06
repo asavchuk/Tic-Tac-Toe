@@ -490,16 +490,11 @@ class _GameState extends State<Game> {
                   child: IconButton(
                     onPressed: () {
                       setState(() {
-                        _resetCells();
                         player = 'player1';
                         player1Score = 0;
                         player2Score = 0;
                         draw = 0;
-                        pos = [
-                          [null, null, null],
-                          [null, null, null],
-                          [null, null, null],
-                        ];
+                        _resetCells();
                       });
                     },
                     color: Colors.white,
